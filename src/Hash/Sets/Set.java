@@ -2,8 +2,8 @@ package Hash.Sets;
 
 import Hash.Tables.HashTable;
 
-public class Set {
-    HashTable<Integer, Boolean> table;
+public class Set<K> {
+    HashTable<K, Boolean> table;
 
     public Set(int capacity){
         this.table = new HashTable<>(capacity);
@@ -15,7 +15,7 @@ public class Set {
         boolean first = true;
         for (int i = 0; i < table.table.length; i++) {
             if (table.table[i] != null) {
-                for (Hash.Tables.List<Integer, Boolean> item : table.table[i]) {
+                for (Hash.Tables.BucketItem<K, Boolean> item : table.table[i]) {
                     if (!first) out.append(", ");
                     out.append(item.key);
                     first = false;
@@ -26,20 +26,20 @@ public class Set {
         return out.toString();
     }
 
-    public void add(int val){
+    public void add(K val){
         this.table.set(val, true);
     }
 
-    public void remove(int val){
+    public void remove(K val){
         this.table.delete(val);
     }
 
-    public boolean contains(int val){
+    public boolean contains(K val){
         return this.table.contains(val);
     }
 
     public static void main(String[] args) {
-        Set set = new Set(5);
+        Set<Integer> set = new Set<>(5);
 
         System.out.println("Initial set: " + set);
 
