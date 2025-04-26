@@ -13,11 +13,11 @@ public class BinarySearch {
 
     public int[] getArr() { return this.arr; }
 
-    public Object search(){
-        return search(arr, 0, arr.length - 1, 99);
+    public Object search(int key){
+        return search(arr, 0, arr.length - 1, key);
     }
 
-    public Object search(int[] arr, int start, int end, int key) {
+    private Object search(int[] arr, int start, int end, int key) {
 
         if (start > end) return null;
 
@@ -33,9 +33,9 @@ public class BinarySearch {
         System.out.println("Binary Search Test: \n");
         System.out.println("Searching for 99 in the array [45, 77, 89, 90, 94, 99, 100]");
         BinarySearch bs = new BinarySearch(new int[]{45, 77, 89, 90, 94, 99, 100});
-        System.out.println("99 is at Index: " + bs.search() + "\n");
+        System.out.println("99 is at Index: " + bs.search(99) + "\n");
         System.out.println("Searching for 105 in the array [45, 77, 89, 90, 94, 99, 100]");
-        System.out.println("105 is at Index: " + bs.search(new int[]{45, 77, 89, 90, 94, 99, 100}, 0, 6, 105));
+        System.out.println("105 is at Index: " + bs.search(105));
     }
 
 }
