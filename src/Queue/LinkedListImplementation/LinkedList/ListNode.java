@@ -1,4 +1,4 @@
-package Queue.LinkedList;
+package Queue.LinkedListImplementation.LinkedList;
 
 public class ListNode<T> {
     private T val;

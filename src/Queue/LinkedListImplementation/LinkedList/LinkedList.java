@@ -1,7 +1,7 @@
-package Queue.LinkedList;
+package Queue.LinkedListImplementation.LinkedList;
 
 public class LinkedList<T> {
-    ListNode<T> head;
+    public ListNode<T> head;
     ListNode<T> tail;
 
     public LinkedList() {
