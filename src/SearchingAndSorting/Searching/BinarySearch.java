@@ -44,7 +44,7 @@ public class BinarySearch<T extends Comparable<T>> {
         System.out.println("Contains 77? " + integerBinarySearch.contains(77) +"\n");
 
         String[] names = {"Aiden", "Bella", "Carter", "Delilah", "Eliana", "Finn", "Hazel", "Leo", "Maya", "Silas"};
-        System.out.println("Searching for 105 in the array [Aiden, Bella, Carter, Delilah, Eliana, Finn, Hazel, Leo, Maya, Silas]");
+        System.out.println("Searching for Carter in the array [Aiden, Bella, Carter, Delilah, Eliana, Finn, Hazel, Leo, Maya, Silas]");
         BinarySearch<String> nameBinarySearch = new BinarySearch<String>(names);
         System.out.println("Carter is at Index: " + nameBinarySearch.search("Carter"));
         System.out.println("Contains Maya? " + nameBinarySearch.contains("Maya") + "\n");
