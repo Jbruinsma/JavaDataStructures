@@ -2,22 +2,26 @@ package SearchingAndSorting.Sorting;
 
 import java.util.Arrays;
 
-public class QuickSort {
-    private int[] arr;
+public class QuickSort<T extends Comparable<T>> {
+    private T[] arr;
 
-    public QuickSort(int[] arr) {
+    public QuickSort(T[] arr) {
         this.arr = arr;
     }
 
-    public void setArr(int[] arr){
+    public void setArr(T[] arr){
         this.arr = arr;
     }
 
-    public int[] getArr(){
-        return arr;
+    public String getArrString(){
+        return Arrays.toString(arr);
     }
 
-    public void quickSort(int[] array, int startingIndex, int endingIndex){
+    public void sort(){
+        quickSort(arr, 0, arr.length - 1);
+    }
+
+    public void quickSort(T[] array, int startingIndex, int endingIndex){
 
         if(endingIndex <= startingIndex) return;
 
@@ -27,17 +31,17 @@ public class QuickSort {
 
     }
 
-    public int partition(int[] array, int startingIndex, int endingIndex){
+    public int partition(T[] array, int startingIndex, int endingIndex){
 
-        int pivot = array[endingIndex];
+        T pivot = array[endingIndex];
         int i = startingIndex - 1;
 
         for (int j = startingIndex; j <= endingIndex; j += 1){
 
-            if (array[j] < pivot){
+            if (array[j].compareTo(pivot) < 0){
 
                 i += 1;
-                int temp = array[i];
+                T temp = array[i];
                 array[i] = array[j];
                 array[j] = temp;
 
@@ -45,7 +49,7 @@ public class QuickSort {
 
         }
         i += 1;
-        int temp = array[i];
+        T temp = array[i];
         array[i] = array[endingIndex];
         array[endingIndex] = temp;
 
@@ -54,9 +58,18 @@ public class QuickSort {
     }
 
     public static void main(String[] args){
-        QuickSort qs = new QuickSort(new int[]{42, 17, 89, 5, 23, 66, 38, 91, 14, 57});
-        qs.quickSort(qs.getArr(), 0, qs.getArr().length - 1);
-        System.out.println(Arrays.toString(qs.getArr()));
+        Integer[] vals = { 5, 2, 9, 1, 5, 6 };
+        QuickSort<Integer> integerQuickSort = new QuickSort<>(vals);
+        System.out.println("Quick Sort: \n");
+        System.out.println("Before Sorting: " + integerQuickSort.getArrString() + "\n");
+        integerQuickSort.sort();
+        System.out.println("After Sorting: " + integerQuickSort.getArrString() + "\n");
+
+        String[] names = {"Hazel", "Maya", "Finn", "Carter", "Silas", "Eliana", "Leo", "Bella", "Aiden", "Delilah"};
+        QuickSort<String> nameQuickSort = new QuickSort<>(names);
+        System.out.println("Before Sorting: " + nameQuickSort.getArrString() + "\n");
+        nameQuickSort.sort();
+        System.out.println("After Sorting: " + nameQuickSort.getArrString() + "\n");
     }
 
 }
