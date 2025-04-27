@@ -2,19 +2,19 @@ package SearchingAndSorting.Sorting;
 
 import java.util.Arrays;
 
-public class SelectionSort {
-    private int[] arr;
+public class SelectionSort<T extends Comparable<T>> {
+    private T[] arr;
 
-    public SelectionSort(int[] arrArray) {
+    public SelectionSort(T[] arrArray) {
         arr = arrArray;
     }
 
-    public void setArr(int[] arr){
+    public void setArr(T[] arr){
         this.arr = arr;
     }
 
-    public void resetArray(){
-        this.arr = new int[]{42, 17, 89, 5, 23, 66, 38, 91, 14, 57};
+    public T[] getArr(){
+        return this.arr;
     }
 
     public void sortIntAscending() {
@@ -34,7 +34,7 @@ public class SelectionSort {
     private int largestPos(int startFrom){
         int largestPos = startFrom;
         for (int i = startFrom + 1; i < arr.length; i ++){
-            if (arr[i] > arr[largestPos]) largestPos = i;
+            if (arr[i].compareTo(arr[largestPos]) > 0) largestPos = i;
         }
         return largestPos;
     }
@@ -42,27 +42,32 @@ public class SelectionSort {
     private int minPos(int startFrom) {
         int minimumPos = startFrom;
         for (int i = startFrom + 1; i < arr.length; i++) {
-            if (arr[i] < arr[minimumPos]) minimumPos = i;
+            if (arr[i].compareTo(arr[minimumPos]) < 0) minimumPos = i;
         }
         return minimumPos;
     }
 
     private void swap(int firstPos, int secondPos) {
-        int temporary = arr[firstPos];
+        T temporary = arr[firstPos];
         arr[firstPos] = arr[secondPos];
         arr[secondPos] = temporary;
     }
 
     public static void main(String[] args){
-        int[] arr = {42, 17, 89, 5, 23, 66, 38, 91, 14, 57};
+        Integer[] vals = {42, 17, 89, 5, 23, 66, 38, 91, 14, 57};
+        System.out.println("Selection Sort: \n");
+        SelectionSort<Integer> integerSelectionSort = new SelectionSort<>(vals);
+        System.out.println("Before sorting: " + Arrays.toString(integerSelectionSort.getArr()) + "\n");
+        integerSelectionSort.sortIntAscending();
+        System.out.println("After sorting: " + Arrays.toString(integerSelectionSort.getArr()) + "\n");
+        integerSelectionSort.sortIntDescending();
+        System.out.println("Sorting in descending order: " + Arrays.toString(integerSelectionSort.getArr()) + "\n");
 
-        SelectionSort ss = new SelectionSort(arr);
-        ss.sortIntAscending();
-        System.out.println(Arrays.toString(ss.arr));
-
-        ss.setArr(arr);
-        ss.sortIntDescending();
-        System.out.println(Arrays.toString(ss.arr));
+        String[] names = {"Hazel", "Maya", "Finn", "Carter", "Silas", "Eliana", "Leo", "Bella", "Aiden", "Delilah"};
+        SelectionSort<String> nameSelectionSort = new SelectionSort<>(names);
+        System.out.println("Before sorting: " + Arrays.toString(nameSelectionSort.getArr()) + "\n");
+        nameSelectionSort.sortIntAscending();
+        System.out.println("After sorting: " + Arrays.toString(nameSelectionSort.getArr()) + "\n");
 
     }
 
