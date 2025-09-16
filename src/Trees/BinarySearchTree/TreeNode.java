@@ -68,6 +68,7 @@ public class TreeNode<T extends Comparable<T>>{
     }
 
     public ArrayList<T> preOrder(){
+        // Base -> Left -> Right
         ArrayList<T> vals = new ArrayList<>();
         vals.add(this.val);
         if (this.left != null) vals.addAll(this.left.preOrder());
@@ -76,6 +77,7 @@ public class TreeNode<T extends Comparable<T>>{
     }
 
     public ArrayList<T> inOrder(){
+        // Left -> Base -> Right
         ArrayList<T> vals = new ArrayList<>();
         if (this.left != null) vals.addAll(this.left.inOrder());
         vals.add(this.val);
@@ -84,6 +86,7 @@ public class TreeNode<T extends Comparable<T>>{
     }
 
     public ArrayList<T> postOrder(){
+        // Left -> Right -> Base
         ArrayList<T> vals = new ArrayList<>();
         if (this.left != null) vals.addAll(this.left.postOrder());
         if (this.right != null) vals.addAll(this.right.postOrder());
